@@ -48,5 +48,7 @@
     </div>
     <footer class="text-center not-fixed">
         <span class="glyphicon glyphicon-envelope"></span> <span><a href="mailto:{{ env('INFO_MAIL') }}">{{ env('INFO_MAIL') }}</a></span>
+        <br>
+        Az adatok forrása a <a target="_blank" href="http://www.menetrendek.hu">menetrendek.hu</a>
     </footer>
 @endsection
