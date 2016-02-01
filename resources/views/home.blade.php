@@ -117,7 +117,10 @@
             $("#when").pickadate({
                 formatSubmit: 'yyyy-mm-dd',
                 hiddenName: true,
-                min: new Date()
+                min: new Date(),
+                onStart: function() {
+                    this.set('select', new Date())
+                }
             });
 
 

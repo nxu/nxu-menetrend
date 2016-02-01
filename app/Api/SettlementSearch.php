@@ -31,9 +31,11 @@ class SettlementSearch
             ->where('name', 'LIKE', '%'.$settlementName.'%')
             ->orderBy(app('db')->raw("
                 CASE
-                    WHEN name LIKE '".$settlementName."%' THEN 1
-                    WHEN name LIKE '%".$settlementName."%' THEN 2
+                    WHEN name = '".$settlementName."' THEN 1
+                    WHEN name LIKE '".$settlementName."%' THEN 2
+                    WHEN name LIKE '%".$settlementName."%' THEN 3
                 END"))
+            ->orderBy('name', 'asc')
             ->limit(5)
             ->lists('id', 'name');
         return $settlements;
