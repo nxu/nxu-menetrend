@@ -42,7 +42,7 @@ class MenetrendController extends Controller
     public function showHomepage()
     {
         return view('home')->with([
-            'bgId'  => rand(1, 4)
+            'bgId'  => rand(1, 2)
         ]);
     }
 

@@ -7,7 +7,7 @@ It uses the data of [Menetrendek.hu](http://www.menetrendek.hu).
 ### Changelog
 #### 2017. 01. 29.
 - Added settlements.sql to resources (I'm too lazy to write a seeder)
-- Replaced two background images
+- Replaced background images with 2 new
 - Upgraded to Lumen 5.4
 - Refactored settlement search API
 

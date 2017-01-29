@@ -28,18 +28,18 @@
                     </div>
                 </div>
                 @foreach($schedule as $route)
-                    <div class="row route">
+                    <div class="row route @if ($route->alreadyGone()) gone @endif">
                         <div class="col-xs-9 col-sm-5">
-                            <span class="station">{{ $route['from'] }}</span>
+                            <span class="station">{{ $route->from }}</span>
                         </div>
                         <div class="col-xs-3 col-sm-1 text-right">
-                            <span class="departure">{{ $route['departure'] }}</span>
+                            <span class="departure">{{ $route->departure->format('H:i') }}</span>
                         </div>
                         <div class="col-xs-9 col-sm-5">
-                            <span class="station">{{ $route['to'] }}</span>
+                            <span class="station">{{ $route->to }}</span>
                         </div>
                         <div class="col-xs-3 col-sm-1 text-right">
-                            <span class="arrival">{{ $route['arrival'] }}</span>
+                            <span class="arrival">{{ $route->arrival->format('H:i') }}</span>
                         </div>
                     </div>
                 @endforeach

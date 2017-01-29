@@ -8,7 +8,7 @@
 
 namespace App\Api;
 
-
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 
 class Schedule
@@ -29,7 +29,7 @@ class Schedule
         );
 
         // Parse response
-        return $this->parseResponse($response);
+        return $this->parseResponse($response, new Carbon($when));
     }
 
     /**
@@ -120,7 +120,7 @@ class Schedule
         return (string) $res->getBody();
     }
 
-    private function parseResponse($response)
+    private function parseResponse($response, $date = null)
     {
         $data = json_decode($response);
         $routes = [];
@@ -135,12 +135,13 @@ class Schedule
         $keys = (array)($schedule);
 
         foreach($keys as $routeData) {
-            $routes[] = [
-                'from' => $routeData->indulasi_hely,
-                'to' => $routeData->erkezesi_hely,
-                'departure' => $routeData->indulasi_ido,
-                'arrival' => $routeData->erkezesi_ido
-            ];
+            $routes[] = new Route(
+                $date,
+                $routeData->indulasi_hely,
+                $routeData->erkezesi_hely,
+                $routeData->indulasi_ido,
+                $routeData->erkezesi_ido
+            );
         }
 
         return $routes;
