@@ -26,23 +26,27 @@ class SettlementSearch
      */
     public function getSettlementsByName($settlementName)
     {
-        $settlements = app('db')
-            ->table('settlements')
-            ->where('name', 'LIKE', '%'.$settlementName.'%')
-            ->orderBy(app('db')->raw("
-                CASE
-                    WHEN name = '".$settlementName."' THEN 1
-                    WHEN name LIKE '".$settlementName."%' THEN 2
-                    WHEN name LIKE '%".$settlementName."%' THEN 3
-                END"))
-            ->orderBy('name', 'asc')
+        return $this->getSettlementQuery($settlementName)
             ->limit(5)
-            ->lists('id', 'name');
-        return $settlements;
+            ->pluck('id', 'name');
     }
 
     public function getSettlementIdByName($settlementName)
     {
-        return app('db')->table('settlements')->where('name', 'LIKE', '%' . $settlementName . '%')->value('id');
+        return $this->getSettlementQuery($settlementName)->pluck('id');
+    }
+    
+    protected function getSettlementQuery($name)
+    {
+        return app('db')
+            ->table('settlements')
+            ->where('name', 'LIKE', '%'.$name.'%')
+            ->orderBy(app('db')->raw("
+                CASE
+                    WHEN name = '".$name."' THEN 1
+                    WHEN name LIKE '".$name."%' THEN 2
+                    WHEN name LIKE '%".$name."%' THEN 3
+                END"))
+            ->orderBy('name', 'asc');
     }
 }
