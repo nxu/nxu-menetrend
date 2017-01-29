@@ -30,13 +30,13 @@
                         <form id="search-form" action="/menetrend" method="post">
                             <div class="prefixed-input">
                                 <label for="from" class="glyphicon glyphicon-home"></label>
-                                <input type="text" autocomplete="off" autofocus class="form-control required" placeholder="Honnan?" id="from">
+                                <input type="text" name="from_text" autocomplete="off" autofocus class="form-control required" placeholder="Honnan?" id="from">
                                 <input type="hidden" id="from_hidden" name="from">
                             </div>
 
                             <div class="prefixed-input">
                                 <label for="to" class="glyphicon glyphicon-arrow-right"></label>
-                                <input type="text" autocomplete="off" class="form-control required" placeholder="Hová?" id="to">
+                                <input type="text" name="to_text" autocomplete="off" class="form-control required" placeholder="Hová?" id="to">
                                 <input type="hidden" id="to_hidden" name="to">
                             </div>
 
@@ -81,6 +81,10 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+@endsection
+
+@section('extra-scripts')
+
 
     <script type="application/javascript">
         $(document).ready(function() {
@@ -127,9 +131,9 @@
             $("#search-form").submit(function(e) {
 
                 // Hyper simple validation
-                if ($("#from_hidden").val() == '' ||
-                                $("#to_hidden").val() == '' ||
-                                $("#when").val() == '') {
+                if ($("#from").val() == '' ||
+                    $("#to").val() == '' ||
+                    $("#when").val() == '') {
                     e.preventDefault();
                     return false;
                 }

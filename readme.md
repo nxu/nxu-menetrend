@@ -9,7 +9,11 @@ It uses the data of [Menetrendek.hu](http://www.menetrendek.hu).
 - Added settlements.sql to resources (I'm too lazy to write a seeder)
 - Replaced background images with 2 new
 - Upgraded to Lumen 5.4
-- Refactored settlement search API
+- Refactored API
+- Past routes now have a low opacity
+- Schedule page is now scrolled to the next departure automatically
+- Schedule page now has an improved look (mainly on desktop)
+- Added GA
 
 #### 2016. 02. 01.
 - Departure date is now set to the current date by default

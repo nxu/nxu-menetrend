@@ -57,8 +57,6 @@ class MenetrendController extends Controller
         $term = urldecode($term);
         $settlements = $this->settlementApi->getSettlementsByName($term);
 
-        $results = [];
-
         foreach ($settlements as $name => $settlementId) {
             $results[] = [
                 'name' => $name,
@@ -79,8 +77,8 @@ class MenetrendController extends Controller
     {
         // Validate
         $this->validate($request, [
-            'from'  => 'required|min:2',
-            'to'    => 'required|min:2',
+            'from_text'  => 'required|min:2',
+            'to_text'    => 'required|min:2',
             'when'  => 'required|date_format:Y-m-d'
         ]);
 
@@ -100,21 +98,21 @@ class MenetrendController extends Controller
     {
         // Validate
         $this->validate($request, [
-            'from'  => 'required|min:2',
-            'to'    => 'required|min:2',
+            'from_text'  => 'required|min:2',
+            'to_text'    => 'required|min:2',
             'when'  => 'required|date_format:Y-m-d'
         ]);
 
         $schedule = $this->schedule->getSchedule(
-            $request->get('from'),
-            $request->get('to'),
+            $request->get('from') ?: $request->get('from_text'),
+            $request->get('to') ?: $request->get('to_text'),
             $request->get('when'));
 
         if (is_null($schedule)) {
             return redirect('/')->with('errorMessage', 'A megadott útvonalon a megadott időben nem található járat.');
         } else {
-            $from = $this->settlementApi->getSettlementById($request->get('from'));
-            $to = $this->settlementApi->getSettlementById($request->get('to'));
+            $from = $schedule[0]->from;
+            $to = $schedule[0]->to;
             $when = new \DateTime($request->get('when'));
             $when = $when->format('Y. m. d.');
             return view('schedule')->with(compact('from', 'to', 'when', 'schedule'));

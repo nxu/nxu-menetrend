@@ -61,6 +61,8 @@ $app->middleware([
     //Illuminate\Session\Middleware\StartSession::class,
     //Illuminate\View\Middleware\ShareErrorsFromSession::class,
     // Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
+    \App\Http\Middleware\TrimStrings::class,
+    \App\Http\Middleware\ConvertEmptyStringsToNull::class
 ]);
 
 // $app->routeMiddleware([

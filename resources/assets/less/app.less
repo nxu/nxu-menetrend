@@ -1,14 +1,15 @@
+@full-view-min-width: 768px;
+
+@body-bg: #2b252c;
+@text-color: #fff;
+@brand: #e7746f;
+
 @import "elements.less";
-
-@full-view-min-width:           768px;
-
-@body-bg:                       #2b252c;
-@text-color:                    #fff;
-@brand:                         #e7746f;
 
 a, button {
   .transition(0.2s);
 }
+
 body, html {
 
   @media (min-width: @full-view-min-width) {
@@ -28,12 +29,15 @@ body, html {
       &.bg-1 {
         background-image: url('/assets/bg/bg1.jpg');
       }
+
       &.bg-2 {
         background-image: url('/assets/bg/bg2.jpg');
       }
+
       &.bg-3 {
         background-image: url('/assets/bg/bg3.jpg');
       }
+
       &.bg-4 {
         background-image: url('/assets/bg/bg4.jpg');
       }
@@ -105,13 +109,12 @@ body, html {
   }
 }
 
-
 button.search {
   height: 2.2em;
   font-size: 2em;
   display: block;
   width: 100%;
-  
+
   span {
     vertical-align: middle;
   }
@@ -132,6 +135,7 @@ th.picker__weekday {
   font-size: 1em;
   font-weight: normal;
 }
+
 .easy-autocomplete.menetrend ul li, .easy-autocomplete.menetrend ul .eac-category {
   border-color: transparent;
   font-family: inherit;
@@ -139,17 +143,19 @@ th.picker__weekday {
   padding: 15px;
   transition: all 0.4s ease 0s;
 }
+
 .easy-autocomplete.menetrend ul li *, .easy-autocomplete.menetrend ul .eac-category * {
   font-weight: normal;
 }
+
 .easy-autocomplete.menetrend ul li.selected, .easy-autocomplete.menetrend ul .eac-category.selected {
   background-color: @brand;
   color: @body-bg;
 }
+
 .easy-autocomplete.menetrend ul li b, .easy-autocomplete.menetrend ul .eac-category b {
   font-weight: normal;
 }
-
 
 // LOADING INDICATOR
 #loading-indicator {
@@ -180,6 +186,7 @@ th.picker__weekday {
   width: 200px;
   height: 200px;
 }
+
 @-webkit-keyframes uil-cube-css {
   0% {
     -ms-transform: scale(1.4);
@@ -196,6 +203,7 @@ th.picker__weekday {
     transform: scale(1);
   }
 }
+
 @-webkit-keyframes uil-cube-css {
   0% {
     -ms-transform: scale(1.4);
@@ -212,6 +220,7 @@ th.picker__weekday {
     transform: scale(1);
   }
 }
+
 @-moz-keyframes uil-cube-css {
   0% {
     -ms-transform: scale(1.4);
@@ -228,6 +237,7 @@ th.picker__weekday {
     transform: scale(1);
   }
 }
+
 @-ms-keyframes uil-cube-css {
   0% {
     -ms-transform: scale(1.4);
@@ -244,6 +254,7 @@ th.picker__weekday {
     transform: scale(1);
   }
 }
+
 @-moz-keyframes uil-cube-css {
   0% {
     -ms-transform: scale(1.4);
@@ -260,6 +271,7 @@ th.picker__weekday {
     transform: scale(1);
   }
 }
+
 @-webkit-keyframes uil-cube-css {
   0% {
     -ms-transform: scale(1.4);
@@ -276,6 +288,7 @@ th.picker__weekday {
     transform: scale(1);
   }
 }
+
 @-o-keyframes uil-cube-css {
   0% {
     -ms-transform: scale(1.4);
@@ -292,6 +305,7 @@ th.picker__weekday {
     transform: scale(1);
   }
 }
+
 @keyframes uil-cube-css {
   0% {
     -ms-transform: scale(1.4);
@@ -308,6 +322,7 @@ th.picker__weekday {
     transform: scale(1);
   }
 }
+
 .uil-cube-css > div {
   position: absolute;
   width: 80px;
@@ -318,6 +333,7 @@ th.picker__weekday {
   -o-animation: uil-cube-css 1s cubic-bezier(0.2, 0.8, 0.2, 0.8) infinite;
   animation: uil-cube-css 1s cubic-bezier(0.2, 0.8, 0.2, 0.8) infinite;
 }
+
 .uil-cube-css > div:nth-of-type(1) {
   top: 10px;
   left: 10px;
@@ -329,6 +345,7 @@ th.picker__weekday {
   -o-animation-delay: 0s;
   animation-delay: 0s;
 }
+
 .uil-cube-css > div:nth-of-type(2) {
   top: 10px;
   left: 110px;
@@ -340,6 +357,7 @@ th.picker__weekday {
   -o-animation-delay: 0.1s;
   animation-delay: 0.1s;
 }
+
 .uil-cube-css > div:nth-of-type(3) {
   top: 110px;
   left: 10px;
@@ -351,6 +369,7 @@ th.picker__weekday {
   -o-animation-delay: 0.3s;
   animation-delay: 0.3s;
 }
+
 .uil-cube-css > div:nth-of-type(4) {
   top: 110px;
   left: 110px;
@@ -362,8 +381,6 @@ th.picker__weekday {
   -o-animation-delay: 0.2s;
   animation-delay: 0.2s;
 }
-
-
 
 footer {
   font-size: 1.2em;
@@ -395,7 +412,6 @@ footer {
   }
 }
 
-
 #schedule-content {
   #back {
     display: block;
@@ -405,35 +421,35 @@ footer {
 
   h1 {
     margin-bottom: 0;
+
+    @media (max-width: 767px) {
+      font-size: 1.75em;
+    }
   }
   h4 {
     margin-bottom: 30px;
   }
 
   #schedule {
-    .legend {
-      font-size: 1.2em;
-      @media (min-width: 992px) {
-        font-size: 1.4em;
-      }
-      font-weight: bold;
-      color: @brand;
-      margin-bottom: 15px;
-    }
 
     .route {
       padding: 10px 0;
       border-bottom: 1px solid @brand;
+      font-size: 1.2em;
 
-      @media (min-width: 992px) {
-        font-size: 1.4em;
+      &.gone {
+        opacity: .25;
       }
 
+      .station,
+      .departure,
+      .arrival {
+        display: block;
+      }
 
-      span {
-        &.departure, &.arrival {
-          color: @brand;
-        }
+      .departure,
+      .arrival {
+        color: @brand;
       }
     }
   }

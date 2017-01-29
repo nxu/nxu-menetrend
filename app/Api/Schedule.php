@@ -22,6 +22,14 @@ class Schedule
         $to = urldecode($to);
         $when = urldecode($when);
 
+        if (!is_numeric($from)) {
+            $from = (new SettlementSearch())->getSettlementIdByName($from)->first();
+        }
+
+        if (!is_numeric($to)) {
+            $to = (new SettlementSearch())->getSettlementIdByName($to)->first();
+        }
+
         // Send request
         $response = $this->sendScheduleRequest(
             self::MENETREND_API_URL,
@@ -57,14 +65,14 @@ class Schedule
             'honnan_eovx' => "",
             'honnan_eovy' => "",
             'honnan_ls_id' => 0,
-            'honnan_settlement_id' => $from,
+            'honnan_settlement_id' => (int) $from,
             'honnan_site_code' => "0",
             'honnan_zoom' => 7,
             'hova' => 'Szeged',
             'hova_eovx' => "",
             'hova_eovy' => "",
             'hova_ls_id' => 0,
-            'hova_settlement_id' => $to,
+            'hova_settlement_id' => (int) $to,
             'hova_site_code' => "0",
             'hova_zoom' => 7,
             'keresztul' => "",

@@ -21,19 +21,19 @@ class SettlementSearch
     /**
      * Gets an array of settlement IDs and names whose names match the given string.
      *
-     * @param string  $settlementName  Part of the name of the settlement.
+     * @param string  $name  Part of the name of the settlement.
      * @return array
      */
-    public function getSettlementsByName($settlementName)
+    public function getSettlementsByName($name)
     {
-        return $this->getSettlementQuery($settlementName)
+        return $this->getSettlementQuery($name)
             ->limit(5)
             ->pluck('id', 'name');
     }
 
-    public function getSettlementIdByName($settlementName)
+    public function getSettlementIdByName($name)
     {
-        return $this->getSettlementQuery($settlementName)->pluck('id');
+        return $this->getSettlementQuery($name)->pluck('id');
     }
     
     protected function getSettlementQuery($name)
